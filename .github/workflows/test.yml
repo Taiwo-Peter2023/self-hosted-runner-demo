@@ -1,0 +1,27 @@
+name: Test Self-Hosted Runner
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-job:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Display runner information
+        run: |
+          echo "✅ This workflow is running on a self-hosted runner!"
+          echo "Runner Machine Name:"
+          hostname
+          echo "Current Directory:"
+          
+          pwd
+          echo "Listing Files:"
+          dir
+
+      - name: Run test command
+        run: echo "🎉 Self-hosted runner executed successfully!"
